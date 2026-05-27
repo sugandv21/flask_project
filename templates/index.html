@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employees</title>
+</head>
+
+<body>
+
+    <h1>Employee List</h1>
+
+    <ul id="employee-list"></ul>
+
+    <script>
+
+        fetch("http://127.0.0.1:5000/employees")
+        .then(response => response.json())
+        .then(data => {
+
+            const list = document.getElementById("employee-list");
+
+            data.forEach(employee => {
+
+                const li = document.createElement("li");
+
+                li.innerHTML =
+                    employee.name +
+                    " - " +
+                    employee.department;
+
+                list.appendChild(li);
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
